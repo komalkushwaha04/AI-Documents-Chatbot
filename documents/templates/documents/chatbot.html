@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>AI Document Chatbot</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        margin: 0;
+        padding: 0;
+    }
+
+    .container {
+        width: 700px;
+        max-width: 90%;
+        margin: 50px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+
+    .section {
+        margin-bottom: 25px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: bold;
+    }
+
+    input[type="file"],
+    input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+    }
+
+    button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #333;
+        color: white;
+    }
+
+    button:hover {
+        background: #555;
+    }
+
+    .message {
+        color: green;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    .answer {
+        margin-top: 25px;
+        padding: 20px;
+        background: #f1f3f5;
+        border-radius: 8px;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<div class="container">
+
+    <h1>🤖 AI Document Chatbot</h1>
+
+    {% if message %}
+        <p class="message">
+            {{ message }}
+        </p>
+    {% endif %}
+
+
+    <!-- PDF Upload Section -->
+
+    <div class="section">
+
+        <label>Upload PDF</label>
+
+        <form method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            <input
+                type="file"
+                name="pdf_file"
+                accept=".pdf"
+                required
+            >
+
+            <button type="submit">
+                Upload PDF
+            </button>
+
+        </form>
+
+    </div>
+
+
+    <!-- Question Section -->
+
+    <div class="section">
+
+    <label>Ask a Question</label>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <input
+            type="text"
+            name="question"
+            placeholder="Ask something about your document..."
+            required
+        >
+
+        <button type="submit">
+            Ask
+        </button>
+
+    </form>
+
+</div>
+
+    <!-- Answer Section -->
+
+    <div class="answer">
+
+    <h3>AI Answer</h3>
+
+    {% if answer %}
+        <p>{{ answer }}</p>
+    {% else %}
+        <p>Your answer will appear here.</p>
+    {% endif %}
+
+</div>
+```
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+#python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+# secrets
+.env
+.env.*
+#django
+db.sqlite3
+media/
+staticfiles/
+chroma_db/
+# Ide
+.vscode/
+*.pyc
